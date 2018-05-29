@@ -150,11 +150,12 @@ def run(filename):
             if not args == None:
                 args = command['args'][:]
 
-            if (not args == None) and "knob" in command and (not command["knob"] == None) and c in ["move", "scale", "rotate"]:
+            if "knob" in command and c in ["move", "scale", "rotate"] and (not command["knob"] == None) and (not args == None):
+                args = command['args'][:]
                 knob = command["knob"]
                 for i in range(len(args)):
                     if not isinstance(args[i], basestring):
-                        args[i] = args[i] * symbols[knob][1]
+                        args[i] = args[i]*symbols[knob][1]
 
             if c == 'box':
                 if isinstance(args[0], str):
